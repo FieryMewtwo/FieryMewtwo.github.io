@@ -1,0 +1,127 @@
+<!doctype html>
+<html>
+
+<head>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Ubuntu">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Exo">
+<link rel="icon" type="image/x-icon" href="https://raw.githubusercontent.com/FieryMewtwo/homebrew-fileserver/master/resources/pixil-frame-0%20(1).png">        
+
+<style>
+
+body {
+  background-color: #212121;
+  font-family: "Ubuntu", sans-serif;
+  color: darkturquoise;
+}
+        
+/* unvisited link */
+a:link {
+  color: linen;
+}
+
+/* visited link */
+a:visited {
+  color: lightgrey;
+}
+
+/* mouse over link */
+a:hover {
+  color: darkorchid;
+}
+
+/* selected link */
+a:active {
+  color: lime;
+}        
+.goButton {
+  font-family: "Ubuntu", sans-serif;  
+  background-color: darkorchid;
+  border: 2px;
+  border-color: white;
+  border-radius: 7px;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+}
+.logScr {
+    background-color: #212121;
+    color: white;
+    border-color: white;
+    border: 4px;
+    border-radius: 8px;
+}
+.filePrompt {
+    background-color: #212121;
+    color: white;
+    font-family: "Exo", sans-serif;
+    border-radius: 4px;    
+    </style>    
+  <meta charset="utf-8">
+  <title>WebFG + CSS</title>
+</head>
+
+<body>
+  <h1>Web Fusée Launcher: CSS Edition</h1>
+  <p>Fusée Launcher ported to JavaScript using WebUSB. I also threw some CSS in there to make it look a <b><i>teensy</b></i> bit better.</p>
+  <p>
+    Ported from <a href="https://github.com/reswitched/fusee-launcher">fusee-launcher</a>.
+    Original project: <a href="https://github.com/atlas44/web-fusee-launcher/">web-fusee-launcher by atlas44</a>
+    Thanks to ktemkin and ReSwitched for Fusée Gelée and a ton of other things!
+  </p>
+
+  <p>
+    <h4>Instructions:</h4>
+    <ol>
+      <li>Put the Switch in RCM, and connect it to your device.</li>
+      <li>Select either the example payload, or upload one.</li>
+      <li>Press 'Do the thing!'</li>
+      <li>On the consent screen that appears, select 'APX' and hit confirm.</li>
+      <li>If all goes well, the payload will launch! If it didn't work, make sure you're using a Chromium browser</li>  
+    </ol>
+  </p>
+
+  <p>
+    <h4>Random stuff:</h4>
+    <ul>
+      <li>This is pretty poorly tested. I just kind wrote it and whatever. I'm not responsible if anything goes wrong! (Neither is <code>atlas44</code>)</li>
+      <li>This does NOT work on Windows due to a limitation in the Chromium implementation of WebUSB (and probably other reasons!) If you're using Windows, <a href="https://github.com/eliboa/TegraRcmGUI/">TegraRcmGUI</a> is a <b><i>much</b></i> better option.</li>
+      <li>This does NOT currently work on any browser but Chromium (and derivatives), because they don't implement WebUSB.</li>
+      <li>On GNU/Linux (Ubuntu, Fedora, Arch, etc.), you might get an 'Access denied' error!
+        If you do, you can try creating a file at <code>/etc/udev/rules.d/50-switch.rules</code>
+        <div>with the following contents:</div>
+        <div><code>SUBSYSTEM=="usb", ATTR{idVendor}=="0955", MODE="0664", GROUP="plugdev"</code></div>
+          <div>If you're lazy, I made a shell script for <code>bash</code> and <code>zsh</code> users <a href="https://pastebin.com/dl/L8CG1WSE">here</a> that you can use (as long as you use <code>sudo</code> or <code>doas</code> to get priveliges to create the file, since it's in <code>/etc/</code>.)  
+      </li>
+      <li>This has been tested and appears to work on GNU/Linux(Debian and Linux Mint), macOS/OS X, Android (unrooted), Android (rooted with <code>TWRP</code>) and Chrome OS/Chromium OS. <i>Your mileage may vary</i>.</li>
+    </ul>
+  </p>
+
+  <h3>Select a payload:</h3>
+  <div>
+    <form id="mainForm">
+      <p>
+        <input type="radio" name="payload" id="fusee.bin" value="fusee.bin" checked>
+          <label for="fusee.bin">Example payload (fusee.bin) (This is Atmosphère's <code>fusèe</code> bootloader payload.)</label>
+      </p>
+
+      <p>
+        <input type="radio" name="payload" id="uploaded" value="uploaded">
+        <label for="uploaded">Upload a payload:</label>
+        <input type="file" id="payloadUpload" class="input filePrompt">
+      </p>
+    </form>
+
+    <button class="button goButton" id="goButton">Do the thing!</button>
+  </div>
+
+  <h3>Logs:</h3>
+  <textarea cols="80" rows="12" class="textarea logScr" id="output"></textarea>
+
+  <script src="./fusee.bin.js"></script>
+  <script src="./main.js"></script>
+</body>
+
+</html>
