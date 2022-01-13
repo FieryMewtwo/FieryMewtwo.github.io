@@ -1,9 +1,9 @@
 {
-    "windowTitle": "Kiwi IRC - The web IRC client",
+    "windowTitle": "Kiwi IRC on fierymewtwo.github.io",
     "startupScreen": "welcome",
     "kiwiServer": "https://localdev.clients.kiwiirc.com/webirc/kiwiirc/",
     "restricted": false,
-    "theme": "Default",
+    "theme": "Dark",
     "themes": [
         { "name": "Default", "url": "static/themes/default" },
         { "name": "Dark", "url": "static/themes/dark" },
