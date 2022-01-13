@@ -1,0 +1,151 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+<title>Nested</title>
+<meta name="description" content="A simulation of everything. (by Orteil)" />
+<meta name="keywords" content="nested, game, toy, webtoy, orteil, dashnet, universe, simulation of everything, doughnutverse, lasagnaverse, lobster" />
+<meta name="author" content="Orteil" />
+
+<script type="text/javascript">
+    window.cookieconsent_options = {"message":"This website uses cookies for ads and traffic analysis.","dismiss":"Got it!","learnMore":"Learn more","link":"http://orteil.dashnet.org/cookieconsentpolicy.html","target":"_blank","theme":"http://orteil.dashnet.org/cookieconsent.css","domain":"dashnet.org"};
+</script>
+<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/cookieconsent2/1.0.9/cookieconsent.min.js"></script>
+
+<!-- Hello Internet ! Welcome to my source code. If you wish to learn more about how this thing works, please visit /main.js . -->
+
+<!--
+History
+January 2014 : working on a sequel maybe
+January 2013 : added a bunch of new stuff
+January 2012 : finally cleaned up and uploaded
+January 2011 : coded most of Nested
+how's that for a healthy update cycle
+-->
+
+<link rel="shortcut icon" href="favicon.ico" />
+<link rel="stylesheet" type="text/css" href="/style.css" />
+<!--
+-->
+</head>
+
+<body>
+<div id="header" class="nav"><a href="http://orteil.dashnet.org">&larr;</a> Nested <span id="version"></span> <span id="madeby"> &copy; <a href="http://orteil.dashnet.org">Orteil</a>, 2011-2013 - hosted by <a href="http://dashnet.org">DashNet</a></span><span id="news"></span><div id="styles"></div></div>
+
+
+<div id="debug">
+There is either an error somewhere, or your javascript is disabled.<br>Or maybe you could try refreshing the page ?
+</div>
+
+<div id="sidebar" class="nav">
+
+<form action="https://www.paypal.com/cgi-bin/webscr" method="post" id="donate">
+it ain't gonna host itself<br>
+<input type="hidden" name="cmd" value="_s-xclick">
+<input type="hidden" name="hosted_button_id" value="BBN2WL3TC6QH4">
+<input type="image" src="https://www.paypalobjects.com/en_GB/i/btn/btn_donate_LG.gif" border="0" name="submit" alt="PayPal — The safer, easier way to pay online.">
+<img alt="" border="0" src="https://www.paypalobjects.com/nl_NL/i/scr/pixel.gif" width="1" height="1">
+</form>
+
+
+<div id="news">
+</div>
+
+
+<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<!-- DashNet Orteil Nested Skyscraper -->
+<ins class="adsbygoogle"
+     style="display:inline-block;width:120px;height:600px"
+     data-ad-client="ca-pub-8491708950677704"
+     data-ad-slot="7805441131"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+</div>
+
+<script type="text/javascript" src="/main.js"></script>
+
+
+<script>
+var SeedObject="universe";//This can be set to anything else, like "firefighter" or "donut box".
+var Offline=1;
+</script>
+
+<span style="display:none;">
+<script>Offline=0;</script></span>
+
+<script>
+	
+	LaunchNest(SeedObject.toLowerCase());
+	
+	<!-- quick and dirty dynamic stylesheets (doesn't seem to work in IE, unfortunately) -->
+	var sheet=document.createElement('style');
+	sheet.id="customstyle";
+	document.body.appendChild(sheet);
+	
+	
+	function SetStyle(which)
+	{
+		if (Styles[which].style) sheet.innerHTML=Styles[which].style;
+	}
+	
+	var Styles=[];
+	function Style(color,style)
+	{
+		this.color=color;
+		this.style=style;
+		Styles.push(this);
+	}
+	
+	new Style("#fff",
+	'body {background:#fff;}'+
+	'.thing {border-color:#fff;}'
+	);
+	new Style("#8cf",
+	'body {background:#8cf;}'+
+	'.thing {border-color:#8cf;background:#bef;}'
+	);
+	new Style("#474",
+	'body {background:#474;}'+
+	'.thing {border-color:#141;background:#ada;}'+
+	'.thing a:hover, .thing a:active {background:#141;color:#fff;}'+
+	'.arrow {background:#141;}'
+	);
+	new Style("#953",
+	'body {background:#953;}'+
+	'.thing {border-color:#620;background:#c96;}'+
+	'.thing a:hover, .thing a:active {background:#620;color:#fff;}'+
+	'.arrow {background:#620;}'
+	);
+	new Style("#a97",
+	'body {background:#a97;}'+
+	'.thing {border-color:#a97;background:#cb9;font-family:Georgia,serif;font-size:10pt;box-shadow:0px 2px 2px #321;}'+
+	'.thing, .thing a, .thing a:hover, .thing a:active {color:#321;}'+
+	'.thing a:hover, .thing a:active {color:#852;background:transparent;text-shadow:0px 0px 2px #fff;}'+
+	'.arrow {background:transparent;color:#321;}'
+	);
+	new Style("#ccc",
+	'.thing{border-radius:10px;-moz-border-radius:10px;padding:5px;border-top:#fff solid 2px;border-left:#ddd solid 2px;border-right:#ddd solid 2px;border-bottom:#bbb solid 2px;-moz-box-shadow: 0px 2px 3px #000;padding-right:1px;}.arrow{border-radius:10px;-moz-border-radius:10px;padding-left:4px;padding-right:4px;}.thing a{border-radius:10px;-moz-border-radius:10px;}'
+	);
+	new Style("#000",
+	'body {background:#000;}'+
+	'.thing {border-color:#000;background:#222;color:#fff;}'+
+	'.thing a {color:#fff;}'+
+	'.thing a:active {background:#fff;color:#000;}'
+	);
+	new Style("#214",
+	'body {background:url(UniverseBG.jpg);}'+
+	'.thing {border-color:#fff;border-width:1px;background:transparent;color:#fff;box-shadow:0px 0px 8px #428,0px 0px 4px #fff inset;}'+
+	'.thing a {color:#fff;background:rgba(0,0,0,0.5);}'+
+	'.thing a:hover, .thing a:hover .arrow {background:#fff;color:#000;}'
+	);
+	
+	var str="";
+	for (var i in Styles)
+	{
+		str+='<a href="javascript:SetStyle('+i+');" style="background-color:'+Styles[i].color+';">-</a>';
+	}
+	document.getElementById("styles").innerHTML=str;
+</script>
+
+</body>
+</html>
